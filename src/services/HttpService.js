@@ -1,9 +1,7 @@
 import Axios from "axios";
-import http from "http";
 
-const httpAgent = new http.Agent({ keepAlive: true });
 const axios = Axios.create({ withCredentials: true, timeout: 1000 * 180 });
-const BASE_URL = "";
+const BASE_URL = "https://jsonplaceholder.typicode.com";
 
 class HttpService {
   get = (endpoint, data = null, header) => {
@@ -20,19 +18,16 @@ class HttpService {
   };
   ajax = async (endpoint, data, header, method) => {
     try {
-      const res = await axios(
-        {
-          url: `${BASE_URL}${endpoint}`,
-          data,
-          method,
-          headers: header
-            ? {
-                [header.headerName]: header.headerValue,
-              }
-            : "",
-        },
-        { httpAgent }
-      );
+      const res = await axios({
+        url: `${BASE_URL}${endpoint}`,
+        data,
+        method,
+        headers: header
+          ? {
+              [header.headerName]: header.headerValue,
+            }
+          : "",
+      });
       return res.data;
     } catch (e) {
       console.error(e);

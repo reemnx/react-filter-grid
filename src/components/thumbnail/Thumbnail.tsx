@@ -5,11 +5,12 @@ import { ThumbBody } from './ThumbBody'
 import { ThumbFooter } from './ThumbFooter'
 
 interface Props {
-    data: PhotoInterface
+    data: PhotoInterface,
+    onSelect?: (id: number) => void
 }
 
 export const Thumbnail = (props: Props) => {
-    const { data } = props
+    const { data, onSelect } = props
     const thumbWrapper = useRef(null) as React.RefObject<HTMLDivElement>
     const [isIntersecting, setIntersecting] = useState(false)
     useEffect(() => {
@@ -24,8 +25,9 @@ export const Thumbnail = (props: Props) => {
         if (thumbWrapper.current) observer.observe(thumbWrapper.current)
     }
     return (
-        <div ref={thumbWrapper} className='thumbnail-wrapper flex column'>
+        <div ref={thumbWrapper} onClick={() => { onSelect && onSelect(data.id) }} className='thumbnail-wrapper flex column'>
             {
+                // If the grid item is not intersection, do not render the heavy content
                 isIntersecting && <React.Fragment>
                     <ThumbHeader imgUrl={data.thumbnailUrl} />
                     <ThumbBody title={data.title} albumId={data.albumId} />
