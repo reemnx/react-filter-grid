@@ -14,7 +14,10 @@ export const Thumbnail = (props: Props) => {
     const thumbWrapper = useRef(null) as React.RefObject<HTMLDivElement>
     const [isIntersecting, setIntersecting] = useState(false)
     useEffect(() => {
-        initObserver()
+        let observeRef = initObserver()
+        return () => {
+            observeRef.disconnect()
+        }
     }, [])
     const handleIntersection = (entries: any) => {
         const [entry] = entries
@@ -23,6 +26,7 @@ export const Thumbnail = (props: Props) => {
     const initObserver = () => {
         const observer = new IntersectionObserver(handleIntersection, { root: null, rootMargin: "0px", threshold: 0.1 })
         if (thumbWrapper.current) observer.observe(thumbWrapper.current)
+        return observer
     }
     return (
         <div ref={thumbWrapper} onClick={() => { onSelect && onSelect(data.id) }} className='thumbnail-wrapper flex column'>
