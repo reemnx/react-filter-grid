@@ -1,0 +1,27 @@
+.filter-wrapper {
+  & input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid $filter-border;
+    outline: none;
+    background-color: $filter-bg;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    margin-right: 15px;
+  }
+  & button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid $filter-border;
+    outline: none;
+    background-color: $filter-bg;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.2rem;
+    color: rgb(181, 181, 181);
+    &:hover {
+      cursor: pointer;
+      color: white;
+    }
+  }
+}
