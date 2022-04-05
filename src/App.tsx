@@ -40,6 +40,7 @@ function App() {
     setGridItem(null)
   }
 
+
   return (
     <div className="app-wrapper flex column">
       <ViewHeader content='Photo Albums Page' />

@@ -32,11 +32,11 @@ export const Thumbnail = (props: Props) => {
         <div ref={thumbWrapper} onClick={() => { onSelect && onSelect(data.id) }} className='thumbnail-wrapper flex column'>
             {
                 // If the grid item is not intersection, do not render the heavy content
-                isIntersecting && <React.Fragment>
+                isIntersecting && <div className='thumbnail-content flex column fade-in' >
                     <ThumbHeader imgUrl={data.thumbnailUrl} />
                     <ThumbBody title={data.title} albumId={data.albumId} />
                     <ThumbFooter url={data.thumbnailUrl} />
-                </React.Fragment>
+                </div>
             }
         </div>
     )
