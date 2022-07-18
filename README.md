@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Project agenda:
 
-Demonnstait a grid layout that lazy load the grid-item container content only on viewport, <br>
+Demonstrate a grid layout that lazy load the grid-item container content only on viewport, <br>
 Using IntersectionObserver pattern.
 
 ### Stack used:
